@@ -45,27 +45,43 @@ function LoginPage() {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <div className="mt-4 grow flex items-center justify-around">
+      <div className="mb-64">
+        <h1 className="text-4xl text-center mb-4">Login</h1>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
+          {/* <label>Email:</label> */}
+          <input
+            type="email"
+            placeholder="your@email.com"
+            name="email"
+            value={email}
+            onChange={handleEmail}
+          />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+          {/* <label>Password:</label> */}
+          <input
+            type="password"
+            placeholder="password"
+            name="password"
+            value={password}
+            onChange={handlePassword}
+          />
 
-        <button type="submit">Login</button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <button type="submit" className="primary">
+            Login
+          </button>
+        </form>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+        <div className="text-center py-2 text-gray-500">
+          <p>Don't have an account yet?</p>
+          <Link className="underline text-black" to={"/signup"}>
+            {" "}
+            Sign Up
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

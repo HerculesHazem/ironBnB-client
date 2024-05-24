@@ -1,12 +1,14 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-// import { useContext } from "react";
-// import { AuthContext } from "../../context/auth.context";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+import { useNavigate } from "react-router-dom/dist";
 
 function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
-  // const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -52,8 +54,8 @@ function Navbar() {
           </button>
         </div>
         <Link
-          to={"/login"}
-          //   to={user ? "/account" : "/login"}
+          //to={"/login"}
+          to={user ? "/account" : "/login"}
           className="flex items-center gap-2 border border-gray-300 rounded-full py-2 px-4 "
         >
           <svg
@@ -84,8 +86,16 @@ function Navbar() {
               />
             </svg>
           </div>
-          {/* {!!user && <div>{user.name}</div>} */}
+          {!!user && <div>{user.name}</div>}
         </Link>
+        <button
+          onClick={() => {
+            logOutUser();
+            navigate("/login");
+          }}
+        >
+          Log out
+        </button>
       </nav>
     </div>
     // <nav>
