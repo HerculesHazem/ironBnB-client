@@ -51,6 +51,9 @@ function Navbar() {
             </svg>
           </button>
         </div>
+
+        <h5 className=" flex gap-1 items-center">Be a host</h5>
+
         <Link
           to={"/login"}
           //   to={user ? "/account" : "/login"}
